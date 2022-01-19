@@ -10,7 +10,7 @@ concurrency:
 
 env:
   REGISTRY: mckrava
-  IMAGE_TAG: 6.1.1-0.9.13-0.1.0
+  IMAGE_TAG: 6.1.1-0.9.13-0.1.1
 
 jobs:
   build-testnet-multiarch-images:

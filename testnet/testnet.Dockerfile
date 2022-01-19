@@ -32,6 +32,8 @@ COPY ./testnet/basilisk testing-basilisk
 RUN chmod +x basilisk
 RUN chmod +x testing-basilisk
 
+WORKDIR /
+
 RUN git clone -b feature/dockerize-testnet https://github.com/galacticcouncil/Basilisk-api.git
 #COPY . /Basilisk-api
 WORKDIR /Basilisk-api
