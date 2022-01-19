@@ -37,7 +37,7 @@ RUN git clone -b feature/dockerize-testnet https://github.com/galacticcouncil/Ba
 WORKDIR /Basilisk-api
 
 # Clean up redundant bin files.
-RUN rm testnet/basilisk
+#RUN rm testnet/basilisk
 RUN yarn install --frozen-lockfile --network-timeout 600000
 
 CMD ["yarn", "run", "testnet:start"]
