@@ -10,7 +10,7 @@ concurrency:
 
 env:
   REGISTRY: mckrava
-  IMAGE_TAG: 6.1.1-0.9.13-0.1.1
+  IMAGE_TAG: 6.1.1-0.9.13-0.1.2
 
 jobs:
   build-testnet-multiarch-images:
@@ -26,10 +26,6 @@ jobs:
         with:
           buildkitd-flags: --debug
 
-      - run: |
-          pwd
-          ls -l
-
       - name: Download Basilisk-node
         uses: dawidd6/action-download-artifact@v2
         with:
@@ -42,12 +38,6 @@ jobs:
           # Optional, defaults to current repo
           repo: galacticcouncil/Basilisk-node
           path: testnet
-
-      - run: |
-          pwd
-          ls -l
-          cd testnet
-          ls -l
 
       - name: Login to my Registry
         uses: docker/login-action@v1
