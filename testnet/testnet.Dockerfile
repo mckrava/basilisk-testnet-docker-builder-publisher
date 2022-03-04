@@ -1,6 +1,6 @@
 FROM --platform=$BUILDPLATFORM node:16
 
-ENV VERSION_POLKADOT_NODE=0.9.17
+ENV VERSION_POLKADOT_NODE=0.9.17-rc4
 ENV VERSION_BASILISK_NODE=7.0.0
 
 #RUN apt-get update && curl https://getsubstrate.io -sSf | bash -s -- --fast
@@ -24,16 +24,15 @@ RUN mv Basilisk-node-$VERSION_BASILISK_NODE Basilisk-node
 WORKDIR /Basilisk-node/target/release
 
 RUN wget https://github.com/galacticcouncil/Basilisk-node/releases/download/v$VERSION_BASILISK_NODE/basilisk
-RUN ls
-RUN pwd
-COPY /basilisk testing-basilisk
+RUN cp basilisk testing-basilisk
+RUN chmod +x basilisk
+RUN chmod +x testing-basilisk
 
 # Use locally built bins instead of fetching release bin files from the repository. Insert locally built bin file into ./testnet folder.
 #COPY ./testnet/basilisk basilisk
 #COPY ./testnet/basilisk testing-basilisk
-
-RUN chmod +x basilisk
-RUN chmod +x testing-basilisk
+#RUN chmod +x basilisk
+#RUN chmod +x testing-basilisk
 
 WORKDIR /
 
