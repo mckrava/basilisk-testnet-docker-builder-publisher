@@ -10,7 +10,7 @@ concurrency:
 
 env:
   REGISTRY: mckrava
-  IMAGE_TAG: 6.1.1-0.9.13-0.1.3
+  IMAGE_TAG: 7.0.0-0.9.17-0.1.4
 
 jobs:
   build-testnet-multiarch-images:
@@ -26,18 +26,20 @@ jobs:
         with:
           buildkitd-flags: --debug
 
-      - name: Download Basilisk-node
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          github_token: ${{secrets.GH_TOKEN}}
-          # Required, workflow file name or ID
-          workflow: tests.yml
-          # Optional, will use specified workflow run
-          run_id: 1705436387
-          name: basilisk
-          # Optional, defaults to current repo
-          repo: galacticcouncil/Basilisk-node
-          path: testnet
+# Use this if you need use custom artifact build from custom runs
+
+#      - name: Download Basilisk-node
+#        uses: dawidd6/action-download-artifact@v2
+#        with:
+#          github_token: ${{secrets.GH_TOKEN}}
+#          # Required, workflow file name or ID
+#          workflow: tests.yml
+#          # Optional, will use specified workflow run
+#          run_id: 1705436387
+#          name: basilisk
+#          # Optional, defaults to current repo
+#          repo: galacticcouncil/Basilisk-node
+#          path: testnet
 
       - name: Login to my Registry
         uses: docker/login-action@v1
