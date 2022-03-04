@@ -24,7 +24,9 @@ RUN mv Basilisk-node-$VERSION_BASILISK_NODE Basilisk-node
 WORKDIR /Basilisk-node/target/release
 
 RUN wget https://github.com/galacticcouncil/Basilisk-node/releases/download/v$VERSION_BASILISK_NODE/basilisk
-COPY basilisk testing-basilisk
+RUN ls
+RUN pwd
+COPY /basilisk testing-basilisk
 
 # Use locally built bins instead of fetching release bin files from the repository. Insert locally built bin file into ./testnet folder.
 #COPY ./testnet/basilisk basilisk
