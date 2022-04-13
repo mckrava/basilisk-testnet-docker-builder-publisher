@@ -58,7 +58,7 @@ jobs:
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           file: ./testnet/testnet-sandbox-dockerhub.Dockerfile
           tags: ${{ env.REGISTRY }}/polkadot-basilisk-testnet-sandbox-multiarch:${{env.IMAGE_TAG}}
-          build-args:
+          build-args: |
             POLKADOT_NODE=${{ github.event.inputs.polkadot_version }}
             BASILISK_NODE=${{ github.event.inputs.basilisk_node_version }}
 
