@@ -3,18 +3,21 @@ name: Build and Publish Testnet Sandbox Docker Image
 on:
   workflow_dispatch:
     inputs:
-      polkadot_version:
-        description: 'Polkadot release version'
-        required: true
-        type: string
       basilisk_node_version:
         description: 'Basilisk-node release version'
         required: true
         type: string
+
+      polkadot_version:
+        description: 'Polkadot release version'
+        required: true
+        type: string
+
       image_build_version:
         description: 'Docker image build version (Semantic Versioning should be used)'
         required: true
         type: string
+
       registry_name:
         description: 'Docker Hub registry name'
         required: false
@@ -27,8 +30,7 @@ concurrency:
 
 env:
   REGISTRY: ${{ github.event.inputs.registry_name }}
-  IMAGE_TAG: ${{ github.event.inputs.polkadot_version }}-${{ github.event.inputs.basilisk_node_version }}-${{ github.event.inputs.image_build_version }}
-#  IMAGE_TAG: 7.0.0-0.9.17_rc4-0.1.4
+  IMAGE_TAG: ${{ github.event.inputs.basilisk_node_version }}-${{ github.event.inputs.polkadot_version }}-${{ github.event.inputs.image_build_version }}
 
 jobs:
   build-testnet-multiarch-images:
@@ -59,6 +61,6 @@ jobs:
           file: ./testnet/testnet-sandbox-dockerhub.Dockerfile
           tags: ${{ env.REGISTRY }}/polkadot-basilisk-testnet-sandbox-multiarch:${{env.IMAGE_TAG}}
           build-args: |
-            POLKADOT_NODE=${{ github.event.inputs.polkadot_version }}
-            BASILISK_NODE=${{ github.event.inputs.basilisk_node_version }}
+            VERSION_POLKADOT_NODE=${{ github.event.inputs.polkadot_version }}
+            VERSION_BASILISK_NODE=${{ github.event.inputs.basilisk_node_version }}
 
