@@ -1,8 +1,8 @@
 name: Build Images and Deploy to Personal Registry
 
-on:
-  push:
-    branches: [master]
+#on:
+#  push:
+#    branches: [master]
 
 concurrency:
   group: build-images
